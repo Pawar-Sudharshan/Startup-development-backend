@@ -7,7 +7,7 @@ import startupRoutes from './routes/startupRoutes.js';
 import cors from 'cors';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(cors({
   origin: 'https://startup-development-frontend.vercel.app', // ONLY allow your Vercel frontend
