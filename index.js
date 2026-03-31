@@ -4,10 +4,17 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import { clerkMiddleware } from '@clerk/express';
 import startupRoutes from './routes/startupRoutes.js';
+import cors from 'cors';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors({
+  origin: 'https://startup-development-frontend.vercel.app', // ONLY allow your Vercel frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'], // Authorization is mandatory for Clerk to work
+  credentials: true
+}));
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB via mongoose'))
